@@ -11,65 +11,77 @@
     <title>Select2Demo1</title>
     <script>
         $(document).ready(function() {
-            // var data = [{
-            //     id: 0,
-            //     text: 'enhancement'
-            // }, {
-            //     id: 1,
-            //     text: 'bug'
-            // }, {
-            //     id: 2,
-            //     text: 'duplicate'
-            // }, {
-            //     id: 3,
-            //     text: 'invalid'
-            // }, {
-            //     id: 4,
-            //     text: 'wontfix'
-            // }];
-            $(".select2Demo").select2({
-                placeholder: 'this is place holder',
-                ajax: {
-                    url: "https://api.github.com/search/repositories",
-                    dataType: 'json',
-                    delay: 250,
-                    data: function(params) {
-                        return {
-                            q: params.term, // search term
-                            page: params.page
-                        };
-                    },
-                    processResults: function(data, params) {
-                        // parse the results into the format expected by Select2
-                        // since we are using custom formatting functions we do not need to
-                        // alter the remote JSON data, except to indicate that infinite
-                        // scrolling can be used
-                        params.page = params.page || 1;
+            var data = [{
+                id: 0,
+                text: 'enhancement'
+            }, {
+                id: 1,
+                text: 'bug'
+            }, {
+                id: 2,
+                text: 'duplicate'
+            }, {
+                id: 3,
+                text: 'invalid'
+            }, {
+                id: 4,
+                text: 'wontfix'
+            }];
 
-                        return {
-                            results: data.items,
-                            pagination: {
-                                more: (params.page * 30) < data.total_count
-                            }
-                        };
-                    },
-                    cache: true
-                },
-                escapeMarkup: function(markup) {
-                    return markup;
-                }, // let our custom formatter work
-                minimumInputLength: 1,
-                templateResult: formatRepo, // omitted for brevity, see the source of this page
-                templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+            $(".select2Demo").select2({
+              data:data
+
+            });
+
+            $('.select2Demo').on('change', function() {
+                var result = $('.select2Demo').val();
+                $('.selectedItems').text(result);
+
+            });
+            var $example = $(".select2Demo").select2();
+            var $eventSelect = $(".select2Demo");
+
+            // $eventSelect.on("select2:open", function(e) {
+            //     console.log("select2:open", e);
+            // });
+            // $eventSelect.on("select2:close", function(e) {
+            //     console.log("select2:close", e);
+            // });
+            // $eventSelect.on("select2:select", function(e) {
+            //     console.log("select2:select", e);
+            // });
+            // $eventSelect.on("select2:unselect", function(e) {
+            //     console.log("select2:unselect", e);
+            // });
+            // $eventSelect.on("change", function(e) {
+            //     console.log("change");
             // });
 
-        });
 
-        $('.select2Demo').on('change', function() {
-        var result = $('.select2Demo').val();
-        $('.selectedItems').text(result);
+            $(".ca").on("click", function() {
+                $example.val("ca").trigger("change");
+            });
 
-        });
+            $(".open").on("click", function() {
+                $example.select2("open");
+            });
+            $(".cls").on("click", function() {
+                $example.select2("close");
+            });
+
+            $(".init").on("click", function() {
+                $example.select2();
+            });
+            $(".destroy").on("click", function() {
+                $example.select2("destroy");
+            });
+
+            $(".multi-set").on("click", function() {
+                $example.val(["ele", "do"]).trigger("change");
+            });
+            $(".multi-clear").on("click", function() {
+                $example.val(null).trigger("change");
+            });
         });
     </script>
     <style media="screen">
@@ -81,17 +93,27 @@
 
 <body>
     <div class="container">
+        <br><br><br>
         <select class="select2Demo" name="Countries" multiple="multiple">
-        <option>elephant</option>
-        <option>dog</option>
-        <option>cat</option>
-        <option>boy</option>
-        <option>apple</option>
+        <option value="ele">elephant</option>
+        <option value="do">dog</option>
+        <option value="ca">cat</option>
+        <option value="bo">boy</option>
+        <option value="ap">apple</option>
     </select>
-
-        <div class="resultDiv">
-            <p class="selectedItems"></p>
-        </div>
+    <br><br><br>
+    <div class="btnDiv">
+      <button type="button" name="setCat" class="btn btn-primary ca">Set Cat</button>
+      <button type="button" name="openSelect2" class="btn btn-success open">Open</button>
+      <button type="button" name="close" class="btn btn-danger cls">Close</button>
+      <button type="button" name="init" class="btn btn-info init">Init</button>
+      <button type="button" name="destroy" class="btn btn-danger destroy">Destroy</button>
+      <button type="button" name="multiSet" class="multi-set btn btn-primary">Set Elephant and Dog</button>
+      <button type="button" name="multiClear" class="multi-clear btn btn-danger">Multi Clear</button>
+    </div>
+    <div class="resultDiv">
+      <p class="selectedItems"></p>
+    </div>
     </div>
 </body>
 

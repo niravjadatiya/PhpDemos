@@ -26,7 +26,7 @@
       if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
       }
-      $tbl_name = 'registration'
+      $tbl_name = 'registration';
       // get all data from server
       $query = "SELECT COUNT(*) as num FROM $tbl_name";
       $sql = "SELECT * FROM registration";
