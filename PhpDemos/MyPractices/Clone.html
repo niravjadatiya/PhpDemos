@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Div ++ --</title>
+</head>
+
+<body>
+
+    <button type="button" id="add" name="addDiv" onclick="addDiv();">Add</button>
+    <button type="button" id="clone" name="clone" onclick="cloner();">Clone Me</button>
+    <br><br>
+</body>
+<style media="screen">
+    .container {
+        border: 2px solid black;
+        float: left;
+        margin-top: 2%;
+        margin-left: 2%;
+        width: 550px;
+        height: 150px;
+        background-color: black;
+        box-shadow: 10px 10px 5px #888888;
+    }
+
+    button {
+        float: left;
+    }
+
+    input[type="button"] {
+        margin-top: 40px;
+        margin-left: 80px;
+        width: 70px;
+        height: 55px;
+        font-weight: bold;
+        font-size: 30pt;
+        border: none;
+        outline: none;
+        background-color: yellow;
+    }
+
+    input[type="button"]:hover {
+        background-color: white;
+    }
+
+    input[type="text"] {
+        height: 20px;
+        width: 90px;
+        font-size: 30pt;
+        font-weight: bolder;
+        padding: 10px;
+        margin-left: 50px;
+        text-align: right;
+        background-color: silver;
+    }
+</style>
+<script type="text/javascript">
+    function cloner() {
+        var elmnt = document.getElementById("myHiddenDiv");
+        elmnt.style.display = '';
+        // (elmnt.style.display === 'none' ? '' : 'none');
+
+
+        var cln = elmnt.cloneNode(true);
+        document.body.appendChild(cln);
+
+        elmnt.style.display = 'none';
+        // (elmnt.style.display === 'none' ? '' : 'none');
+        console.log("gone in clone");
+
+    }
+    //findAncestor finds the parent container class div and returns that div
+    function findAncestor(x) {
+        while (x = x.parentElement) {
+            if (x.className == "container");
+                return x;
+        }
+    }
+
+    function addRemove(ele) {
+        var ele;
+        this.ele = ele;
+
+        var op = ele.value;
+        var parentContainer = findAncestor(ele);
+        console.log(parentContainer);
+
+        if (parentContainer != null) {
+            var ans = parentContainer.getElementsByClassName('answerArea')[0].value;
+            if (op == '-') {
+                parseFloat(ans);
+                ans = ans - 1;
+                parentContainer.getElementsByClassName('answerArea')[0].value = ans;
+
+            } else if (op == '+') {
+                parseFloat(ans)
+                ans++;
+                parentContainer.getElementsByClassName('answerArea')[0].value = ans;
+            }
+        }
+    }
+
+    function addDiv() {
+
+        var div = document.createElement('div');
+        div.className = 'container';
+        document.body.appendChild(div);
+
+        var div1 = document.createElement('div');
+        div1.className = 'container1';
+        div.appendChild(div1);
+
+        var div2 = document.createElement('div');
+        div2.className = 'container2';
+        div1.appendChild(div2);
+
+        var div3 = document.createElement('div');
+        div3.className = 'container3';
+        div2.appendChild(div3);
+
+        var div4 = document.createElement('div');
+        div4.className = 'container4';
+        div3.appendChild(div4);
+
+        var btnMinus = document.createElement("INPUT");
+        btnMinus.setAttribute("type", "button");
+        btnMinus.setAttribute("value", "-");
+        btnMinus.setAttribute("onclick", "addRemove(this)");
+        div4.appendChild(btnMinus);
+
+        var txtAnswer = document.createElement("INPUT");
+        txtAnswer.setAttribute("type", "text");
+        txtAnswer.setAttribute("value", '0');
+        txtAnswer.setAttribute("class", 'answerArea');
+        txtAnswer.setAttribute("onclick", "addRemove(this)");
+        div4.appendChild(txtAnswer);
+
+        var btnPlus = document.createElement("INPUT");
+        btnPlus.setAttribute("type", "button");
+        btnPlus.setAttribute("value", "+");
+        btnPlus.setAttribute("onclick", "addRemove(this)");
+        div4.appendChild(btnPlus);
+    }
+</script>
+<div class="container" id="myHiddenDiv" style="display: none;">
+    <!-- <div class="container1"> -->
+    <!-- <div class="container2"> -->
+    <!-- <div class="container3"> -->
+    <!-- <div class="container4"> -->
+    <input type="button" name="btnMinus" value="-" onclick="addRemove(this);">
+    <input type="text" name="txtArea" value="0" class="answerArea" onclick="addRemove(this);">
+    <input type="button" name="btnPlus" value="+" onclick="addRemove(this);">
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+</div>
+
+</html>

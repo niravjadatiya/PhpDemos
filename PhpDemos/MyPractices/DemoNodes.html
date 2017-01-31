@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo of Nodes</title>
+</head>
+
+<body>
+    <ul id="tabs">
+        <li class="firsttab" id="id2222"><a href="#">one</a></li>
+        <li class="secondtab" id=id111><a href="#">two</a></li>
+
+        <p>Example list:</p>
+
+        <ul>
+          <li id="item1">Coffee (first li)</li>
+          <input type="text" value="this is value" id="item2" />
+        </ul>
+
+        <p>Click the button to get the HTML content of the next sibling of the first list item.</p>
+
+        <button onclick="myFunction()">Try it</button>
+
+        <p><strong>Note:</strong> The nextElementSibling property is not supported in IE8 and earlier versions.</p>
+
+        <p id="demo"></p>
+
+    </ul>
+</body>
+<script type="text/javascript">
+
+  function init() {
+        var tablinks = document.getElementById('tabs').getElementsByTagName('a');
+        for (var i = 0, j = tablinks.length; i < j; i++) {
+            tablinks[i].onclick = doit;
+        }
+    }
+
+    function doit() {
+        alert(this.parentNode.id);
+    }
+    window.onload = init;
+
+
+function myFunction() {
+    var x = document.getElementById("item1").nextElementSibling.value;
+    document.getElementById("demo").innerHTML= x;
+}
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+</head>
+
+<body style="background-color:silver;" onkeypress="escFuntion(event)">
+    <form Name="formCalc" width="100%" onsubmit="return false">
+        <table id="calculator" class="draggable">
+            <tr>
+                <td colspan="4"><input type="text" placeholder="0" name="calDisplay" autocomplete="off"></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="btn" value="7" onclick="buttonOnClick(value);"></td>
+                <td><input type="button" id="btn" value="8" onclick="buttonOnClick(value);"></td>
+                <td><input type="button" id="btn" value="9" onclick="buttonOnClick(value);"></td>
+                <td><input type="button" id="btn" value="/" onclick="buttonOnClick(value);"></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="btn" value="4" onclick="buttonOnClick(value);"></td>
+                <td><input type="button" id="btn" value="5" onclick="buttonOnClick(value);"></td>
+                <td><input type="button" id="btn" value="6" onclick="buttonOnClick(value);"></td>
+                <td><input type="button" id="btn" value="*" onclick="buttonOnClick(value);"></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="btn" value="1" onclick="buttonOnClick(value);"></td>
+                <td><input type="button" id="btn" value="2" onclick="buttonOnClick(value);"></td>
+                <td><input type="button" id="btn" value="3" onclick="buttonOnClick(value);"></td>
+                <td><input type="button" id="btn" value="-" onclick="buttonOnClick(value);"></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="btn" value="0" onclick="buttonOnClick(value);"></td>
+                <td><input type="button" id="btn" value="." onclick="buttonOnClick(value);"></td>
+
+                <td><input type="button" id="btn" value="<" onclick="buttonOnClick(value);"></td>
+                <td><input type="button" id="btn" value="+" onclick="buttonOnClick(value);"></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="btn" value="%" onclick="buttonOnClick(value);"></td>
+                <td><input type="button" id="btn" value=&#8730; onclick="buttonOnClick(value);"></td>
+                <td colspan="2"><input type="button" id="btn" value=x&#178; onclick="buttonOnClick(value);"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="button" id="btn" value="AC" onclick="buttonOnClick(value);"></td>
+                <td colspan="2"><input type="button" id="btn" value="=" onclick="buttonOnClick(value);"></td>
+                <p id="demo"> here the key</p>
+            </tr>
+        </table>
+    </form>
+
+</body>
+<script type="text/javascript">
+    var flag = false;
+    var total = 0;
+    var operator = null;
+    var display = formCalc.calDisplay.value;
+
+    function buttonOnClick(btnValue) {
+
+        switch (btnValue) {
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                console.log("gone in switch");
+                formCalc.calDisplay.value = btnValue;
+                break;
+            default:
+        }
+    }
+</script>
+
+</html>

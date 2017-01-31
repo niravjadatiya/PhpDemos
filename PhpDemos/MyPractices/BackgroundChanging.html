@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Background Color Changing</title>
+    <input type="text" id="val">
+    <input type="button" value="Set Intervel" onclick="getValue()">
+    <input type="button" value="Stop Intervel" onclick="myStopFunction()">
+
+</head>
+
+<body id="division">
+
+    <!-- <div id="division">
+    </div> -->
+
+</body>
+<style media="screen">
+    div {
+        border: 1px solid red;
+        width: 100%;
+        height: 800px;
+    }
+</style>
+<script type="text/javascript">
+    var x;
+    var my = null;
+    var r = 0;
+    var g = 5;
+    var b = 10;
+
+    function getValue() {
+        myStopFunction()
+        x = document.getElementById('val').value;
+        // document.getElementById("demo").innerHTML = x;
+
+        ChangeColor();
+        console.log("THIS IS VALUE :" + x);
+    }
+
+
+    function ChangeColor() {
+        my = setInterval(function() {
+            rgbRandom()
+        }, x);
+
+    }
+
+    function myStopFunction() {
+
+        clearInterval(my);
+        console.log(my);
+    }
+    var rflag = true;
+    var gflag = true;
+    var bflag = true;
+
+    function rgbRandom() {
+        // r = Math.floor((Math.random() * 150) + 1);
+        // g = r+1; //Math.floor((Math.random() * 100) + 1);
+        // b = g+1; //Math.floor((Math.random() * 0) + 1);
+
+        if (rflag) {
+            r++;
+            if (r >= 254) {
+                rflag = false
+                r = r - 10;
+                b = b + 6;
+            }
+
+        } else if (!rflag) {
+            r = r - 1;
+            if (r <= 1) {
+                // r = r+1;
+                rflag = true;
+            }
+        }
+
+        if (gflag) {
+            g++;
+            if (g >= 254) {
+                g = g - 1;
+                gflag = false
+            }
+
+        } else if (!gflag) {
+            g = g - 1;
+            if (g <= 1) {
+                // g++;
+                gflag = true;
+            }
+        }
+
+        if (bflag) {
+            b++;
+            if (b >= 254) {
+                // b = b -4;
+                bflag = false
+            }
+
+        } else if (!bflag) {
+            b = b - 1;
+            if (b <= 1) {
+                // b ++;
+                bflag = true;
+            }
+        }
+
+
+        document.getElementById('division').style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+        console.log("i'm just called and r:g:b:" + r + ":" + g + ":" + b);
+
+    }
+</script>
+
+</html>

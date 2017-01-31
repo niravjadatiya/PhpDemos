@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head aling="center">
+    <meta charset="utf-8">
+    <title>Celsius To Fahrenheit</title>
+    <style media="screen">
+        .MainBox {
+            display: inline-block;
+            width: 50%;
+            /*margin-left: 175px;*/
+            height: 180px;
+            float: left;
+            position: relative;
+            left: 25%;
+            background-color: #4a4747;
+        }
+
+        .box {
+            float: left;
+            width: 290px;
+            /*height: 100px;*/
+            padding: 10px;
+            text-align: center;
+            /*margin-left: 50px;*/
+            font-size: 30pt;
+        }
+
+        #celsius,
+        #fahrenheit {
+            width: 200px;
+            /*border: 1px solid white;*/
+        }
+
+        input[type="text"] {
+            /*height: 50%;*/
+            width: 50%;
+            font-size: 20pt;
+            font-family: sans-serif;
+            color: black;
+            padding: 15px;
+            border: 0;
+            background-color: white;
+            outline: none;
+            /*border-radius: 15px;*/
+            /*margin: 10px;*/
+        }
+
+         ::selection {
+            background-color: #a2a1a1;
+        }
+
+        div {
+            color: white;
+            text-align: center;
+            padding: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="MainBox" align="center">
+
+
+        <div class="box">Celsius
+            <input type="text" id="celsius" align="center">
+        </div>
+
+        <div class="box">Fahrenheit
+            <input type="text" id="fahrenheit" align="center">
+        </div>
+
+
+    </div>
+</body>
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#celsius').val(0);
+        updateFahrenheit();
+        $('#celsius').keyup(function() {
+            updateFahrenheit();
+        });
+    });
+    $(document).ready(function() {
+        $('#fahrenheit').keyup(function() {
+            updateCelsius();
+        });
+    });
+
+    function updateFahrenheit() {
+        var c = $('#celsius').val();
+        // var c = document.getElementById('celsius').value;
+        var f;
+        if ((isNaN(c)) || (c == "") || (c == null)) {
+            f = "";
+        } else {
+            f = CtoF(c);
+        }
+        $('#fahrenheit').val(f);
+    }
+
+    function updateCelsius() {
+        var f = $('#fahrenheit').val();
+        var c;
+        if ((isNaN(f)) || (f == "") || (f == null)) {
+            c = "";
+        } else {
+            c = FtoC(f);
+        }
+        $('#celsius').val(c);
+    }
+
+    function FtoC(f) {
+        var resF = (f - 32) * 5 / 9;
+        return resF.toFixed(2);
+    }
+
+    function CtoF(c) {
+        var resC = c * 9 / 5 + 32;
+        return resC.toFixed(2);
+    }
+</script>
+
+</html>

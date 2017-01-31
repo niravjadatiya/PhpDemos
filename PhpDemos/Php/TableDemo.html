@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>TableDemo</title>
+
+    <style media="screen">
+    body {
+        background: #000;
+        overflow: hidden;
+    }
+
+    canvas {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    #c1 {
+        opacity: 0;
+    }
+
+    #c2 {
+        background: #000;
+        opacity: 0.3;
+    }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table {
+            border: 1px solid black;
+            background-image: url("/home/nirav/Softwares/PHOTOS/budhha/14449845_771444166341652_5808596241993476326_n.png");
+
+        }
+
+        th,
+        td {
+            padding: 20px;
+            color: white;
+        }
+
+        th {
+            background-color: black;
+            opacity: 0.7;
+        }
+        td {
+          background-color: black;
+          opacity: 0.7;
+        }
+
+
+        /*tr:nth-child(even){background-color: #f2f2f2}*/
+        /*tr:hover {background-color: #f1f9f9}*/
+    </style>
+
+</head>
+
+<body >
+  <canvas id="c1" opacity:0.5;></canvas>
+  <canvas id="c2" opacity:0.5;></canvas>
+  <script src="buble.js" charset="utf-8"></script>
+
+    <table style="width :50%;margin-top:20%;" align="center">
+        <tr>
+            <th colspan="2">Login</th>
+        </tr>
+        <tr>
+            <td align="right">User Name</td>
+            <td><input type="text" name="fname"><br></td>
+        </tr>
+        <tr>
+            <td align="right">Password</td>
+            <td><input type="password" name="password"><br></td>
+        </tr>
+        <tr>
+            <td align="center" ; colspan="2"><button type="button" name="button">
+            <a href="login.html" style="text-decoration:none">Submit</button></td>
+        </tr>
+    </table>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.extend(true, $.fn.dataTable.defaults, {
+                // "searching": false,
+                // "ordering": false
+            });
+            var table = $('#example').dataTable({
+                // ajax: "MakeJson.php",
+                "processing": true,
+                "serverSide": true,
+                "ajaxSource": "server_processing.php",
+
+                    "searchable":false,
+                    // "orderable": false,
+                    "targets": 4
+                ,
+                    // columns: [{
+                    //         data: "id"
+                    //     },
+                    //     {
+                    //         data: "firstname"
+                    //     },
+                    //     {
+                    //         data: "username"
+                    //     },
+                    //     {
+                    //         data: "email.0"
+                    //     },
+                    //     {
+                    //         data: "mobileno"
+                    //     },
+                    //     {
+                    //         data: "birthDate",
+                    //     },
+                    //     {
+                    //         data: null,
+                    //         defaultContent: "<button>click</button>"
+                    //     },
+                    // ],
+
+                    "pagingType": "full_numbers",
+                // "data" = dataSet;
+            });
+
+            // var table = $('#example').DataTable();
+            $('#example tbody').on('click', 'button', function() {
+                var data = table.row($(this).parents('tr')).data();
+                alert(data.firstname + "'s mobile is: " + data.mobileno);
+            });
+        });
+        $.fn.dataTable.ext.errMode = 'throw';
+
+        function ajaxCall() {
+            var Result;
+            $.ajax({
+                type: 'POST',
+                url: 'MakeJson.php',
+                data: 'json',
+                // async:false,
+                beforeSend: function() {
+                    // $(string).addClass('deleteImage');
+                },
+                complete: function() {
+
+                },
+                success: function(Result) {
+
+                }
+            });
+        }
+    </script>
+    <title>Data Tables</title>
+</head>
+<div class="container">
+
+    <body>
+        <br>
+        <table id="example" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>First Name</th>
+                    <th>User Name</th>
+                    <th>E-Mail</th>
+                    <th>Mobile No</th>
+                    <th>Created Date</th>
+                    <!-- <th>View</th> -->
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>First Name</th>
+                    <th>User Name</th>
+                    <th>E-Mail</th>
+                    <th>Mobile No</th>
+                    <th>Created Date</th>
+                    <!-- <th>View</th> -->
+                </tr>
+            </tfoot>
+
+        </table>
+</div>
+</body>
+
+</html>

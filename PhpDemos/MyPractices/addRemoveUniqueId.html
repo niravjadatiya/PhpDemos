@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Div ++ --</title>
+</head>
+
+<body>
+    <button type="button" id="add" name="button" onclick="addDiv();">Add</button>
+    <br><br>
+
+</body>
+
+<style media="screen">
+    .container {
+        border: 2px solid black;
+        float: left;
+        margin-top: 2%;
+        margin-left: 2%;
+        width: 550px;
+        height: 150px;
+        /*border-radius: 15px;*/
+        background-color: black;
+        /*padding: 10px;*/
+        box-shadow: 10px 10px 5px #888888;
+    }
+
+    button {
+        float: left;
+    }
+
+    input[type="button"] {
+        margin-top: 40px;
+        margin-left: 80px;
+        width: 70px;
+        height: 55px;
+        font-weight: bold;
+        font-size: 30pt;
+        border: none;
+        outline: none;
+        background-color: yellow;
+        /*display:inline;*/
+        /*float: left;*/
+    }
+
+    input[type="button"]:hover {
+        background-color: white;
+    }
+
+    input[type="text"] {
+        height: 20px;
+        width: 90px;
+        font-size: 30pt;
+        font-weight: bolder;
+        padding: 10px;
+        margin-left: 50px;
+        text-align: right;
+        background-color: silver;
+    }
+</style>
+<script type="text/javascript">
+    function addRemove(op, ele) {
+        var op;
+        this.op = op;
+
+        var ele;
+        this.ele = ele;
+
+        var ansId = ele.getAttribute('textAnsArea');
+        // alert(ansId);
+        var ans = document.getElementById(ansId).value;
+
+        if (op == '-') {
+
+            parseFloat(ans);
+            ans = ans - 1;
+            document.getElementById(ansId).value = ans;
+
+        } else if (op == '+') {
+            var ans = ele.previousSibling.value;
+            parseFloat(ans)
+            ans++;
+            document.getElementById(ansId).value = ans;
+        }
+
+        // console.log(ans);
+
+    }
+
+    var i = 0;
+
+    function addDiv() {
+        var div = document.createElement('div');
+        div.className = 'container';
+        div.id = 'newDiv';
+        document.body.appendChild(div);
+        var ansId = 'answer' + i;
+        var btnMinus = document.createElement("INPUT");
+        var txtAnswer = document.createElement("INPUT");
+        var btnPlus = document.createElement("INPUT");
+
+
+        btnMinus.setAttribute("type", "button");
+        btnMinus.setAttribute("value", "-");
+        btnMinus.setAttribute("id", "minus");
+        btnMinus.setAttribute("textAnsArea", ansId);
+        btnMinus.setAttribute("onclick", "addRemove(value , this)");
+        div.appendChild(btnMinus);
+
+
+
+        txtAnswer.setAttribute("type", "text");
+        txtAnswer.setAttribute("value", '0');
+        txtAnswer.setAttribute("id", 'answer' + i);
+        txtAnswer.setAttribute("textAnsArea", ansId);
+        txtAnswer.setAttribute("class", 'answerArea');
+        txtAnswer.setAttribute("onclick", "addRemove(value , this)");
+        div.appendChild(txtAnswer);
+
+        btnPlus.setAttribute("type", "button");
+        btnPlus.setAttribute("value", "+");
+        btnPlus.setAttribute("id", "plus");
+        btnPlus.setAttribute("textAnsArea", ansId);
+        btnPlus.setAttribute("onclick", "addRemove(value , this)");
+        div.appendChild(btnPlus);
+
+        i++;
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head aling="center">
+    <meta charset="utf-8">
+    <title>Celsius To Fahrenheit</title>
+    <style media="screen">
+        .MainBox {
+            width: auto;
+            height: 500px;
+            /*border: 1px solid lightgray;*/
+            padding: 190px;
+            background-color: black;
+        }
+
+        .box {
+            float: left;
+            width: 300px;
+            height: 100px;
+            padding: 30px;
+            text-align: center;
+            margin-left: 50px;
+            font-size: 30pt;
+        }
+
+        #celsius,
+        #fahrenheit {
+            /*border: 1px solid white;*/
+        }
+
+        input[type="text"] {
+            height: 100%;
+            width: 100%;
+            font-size: 20pt;
+            font-family: sans-serif;
+            color: black;
+            padding: 15px;
+            border: 0;
+            background-color: grey;
+            outline: none;
+            border-radius: 15px;
+            /*margin: 10px;*/
+        }
+
+         ::selection {
+            background-color: #a2a1a1;
+        }
+
+        div {
+            color: #a2a1a1;
+            text-align: center;
+            padding: 1px;
+        }
+    </style>
+</head>
+
+<body bgcolor="black">
+    <div class="MainBox" align="center">
+
+
+        <div class="box">Celsius
+            <input type="text" id="celsius" align="center">
+        </div>
+
+        <div class="box">Fahrenheit
+            <input type="text" id="fahrenheit" align="center">
+        </div>
+
+
+    </div>
+    <!-- <span><input id="celsius"><b>°C</b></span> = <span><input id="fahrenheit"><b>°F</b></span> -->
+
+</body>
+
+</style>
+<script type="text/javascript">
+    document.getElementById('celsius').onkeyup = updateFahrenheit; // function call to update fahrenheit
+    document.getElementById('fahrenheit').onkeyup = updateCelsius; // function call to update celsius
+    document.getElementById('celsius').value = 0;
+    updateFahrenheit();
+
+    function updateFahrenheit() {
+        var c = document.getElementById('celsius').value;
+        var f;
+        if ((isNaN(c)) || (c == "") || (c == null)) {
+            f = "";
+        } else {
+            f = CtoF(c);
+        }
+        document.getElementById('fahrenheit').value = f;
+    }
+
+    function updateCelsius() {
+        var f = document.getElementById('fahrenheit').value;
+        var c;
+        if ((isNaN(f)) || (f == "") || (f == null)) {
+            c = "";
+        } else {
+            c = FtoC(f);
+        }
+        document.getElementById('celsius').value = c;
+    }
+
+
+
+    function FtoC(f) {
+        var resF = (f - 32) * 5 / 9;
+        return resF.toFixed(2);
+    }
+
+    function CtoF(c) {
+        var resC = c * 9 / 5 + 32;
+        return resC.toFixed(2);
+    }
+</script>
+
+</html>

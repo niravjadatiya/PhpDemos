@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Clone practice</title>
+
+</head>
+
+<body>
+    <button type="button" name="CloneFrame" onclick="cloner();">CloneFrame</button>
+<br><br>
+<div class="container" id="HiddenDiv" style="display:none">
+        <input type="button" name="btnMinus" id="btnMinus" value="-" onclick="IncrementDecrement(this)">
+        <input type="text" name="txtArea" id="txtAnswer"  class="txtAnswer" value="0" onclick="IncrementDecrement(this)">
+        <input type="button" name="btnPlus" id="btnPlus" value="+" onclick="IncrementDecrement(this)">
+    </div>
+
+</body>
+<script type="text/javascript">
+  var z = 0;
+    function cloner() {
+
+        console.log("gone in clone");
+        var ele = document.getElementById('HiddenDiv');
+        var child = ele.childNodes;
+        console.log((child)[2]);
+        ele.style.display = '';
+        var clone = ele.cloneNode(true);
+
+        // var val = clone.getAttribute("id") + z;
+        // console.log(val);
+        // clone.setAttribute("id" , val);
+        clone.id = clone.id + z;
+        document.body.appendChild(clone);
+        ele.style.display = 'none';
+        z++;
+    }
+
+    function IncrementDecrement(ele) {
+        var ele;
+        this.ele = ele;
+        // console.log(ele);
+        var op = ele.value;
+
+        // console.log(op);
+        var Parent = findParent(ele);
+        if (Parent != null) {
+            var result = Parent.getElementsByClassName("txtAnswer")[0].value;
+            if (op == '+') {
+                parseFloat(result);
+                result++;
+                Parent.getElementsByClassName("txtAnswer")[0].value = result;
+            } else if (op == '-') {
+                parseFloat(result);
+                result = result - 1;
+                Parent.getElementsByClassName('txtAnswer')[0].value = result;
+            }
+        }
+    }
+
+    function findParent(x) {
+        while (x = x.parentNode) {
+            if (x.className == "container") {
+                return x;
+            }
+        }
+    }
+</script>
+
+<style media="screen">
+    .container {
+        border: 2px solid black;
+        float: left;
+        margin-top: 2%;
+        margin-left: 2%;
+        width: 550px;
+        height: 150px;
+        background-color: black;
+        box-shadow: 10px 10px 5px #888888;
+    }
+
+    button {
+        float: left;
+    }
+
+    input[type="button"] {
+        margin-top: 40px;
+        margin-left: 80px;
+        width: 70px;
+        height: 55px;
+        font-weight: bold;
+        font-size: 30pt;
+        border: none;
+        outline: none;
+        background-color: yellow;
+    }
+
+    input[type="button"]:hover {
+        background-color: silver;
+    }
+
+    input[type="text"] {
+        height: 20px;
+        width: 90px;
+        font-size: 30pt;
+        font-weight: bolder;
+        padding: 10px;
+        margin-left: 50px;
+        text-align: right;
+        background-color: silver;
+    }
+</style>
+
+</html>

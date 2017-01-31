@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <div class="media">
+        <div class="results parent">
+            <!-- id="results " -->
+            <div class="item poster card" style="display:none;" id="HiddenDiv">
+                <div class="image_content">
+                    <a class="result aPoster" href="" alt="">
+                        <img class="poster1" data-sizes="auto" src="" alt="">
+                    </a>
+                </div>
+                <div class="info">
+                    <p>
+                        <a class="title result" href="" title="" alt="" value=""> </a>
+                        <span class="vote_average">4.2<span id="" class=""></span></span>
+                    </p>
+                    <p class="meta">
+                        <span class="release_date"> </span>
+                        <span class="genres">Action,Horror,Crime</span>
+                    </p>
+                    <p class="overview"></p>
+                    <p class="view_more"><a id="movie_346672" class="result aPoster" href="" title="" alt="">More Info</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style media="screen">
+    html {
+        background-color: silver;
+    }
+
+    img {
+        background: url('Preloader_8.gif') no-repeat;
+        /*background-image: "Preloader_8.gif";*/
+        background-size: initial;
+        background-position-x: 50%;
+        background-position-y: 50%;
+    }
+
+    div.item {
+        float: left;
+        /*margin-bottom: 24px;*/
+        margin: 15px;
+        /*color: #d63333;*/
+    }
+
+    div.media {
+        /*width: 1000px;*/
+        margin: 0 auto;
+        margin-top: 65px;
+        margin-left: 80px;
+    }
+
+    div.results {
+        /*margin-top: 30px;*/
+        float: left;
+    }
+
+    div.results::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    div.item.poster {
+        width: 185px;
+    }
+
+    div.item.card {
+        width: 483px;
+        background-color: #fff;
+        height: 278px;
+    }
+
+    div.item.poster.card {
+        border: 1px solid black;
+    }
+
+    div.item.poster.card:hover {
+        box-shadow: 3px 3px 50px 1px black;
+    }
+
+    div.item.poster.card {
+        margin-bottom: 34px;
+        margin-left: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        transition: all 0.3s ease-out;
+    }
+
+    div.item.poster div.image_content img {
+        width: 185px;
+        height: 278px;
+    }
+
+    div.item.poster.card div.image_content {
+        float: left;
+        width: 185px;
+        margin-right: 13px;
+    }
+
+    div.item.poster.card p a.title {
+        /*max-width: 210px;*/
+        width: 230px;
+    }
+
+    div.item p a {
+        font-size: 1.0em;
+    }
+
+    div.item p a.title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 420px;
+        display: inline-block;
+        float: left;
+    }
+
+    div.item.card p a,
+    div.item.card span.vote_average {
+        font-size: 1.0em;
+        line-height: 24px;
+        text-decoration: none;
+        color: black;
+    }
+
+    div.item span.vote_average,
+    div.image_content a div span.vote_average {
+        float: right;
+    }
+
+    .release_date {
+        padding-right: 10px;
+    }
+
+    span.vote_average {
+        float: right;
+        padding-right: 10px;
+    }
+
+    div.item.card p.view_more {
+        border-top: 1px solid #eee;
+        /*position: x;*/
+        bottom: 0;
+        padding: 16px 0 16px 0;
+        width: 100%;
+    }
+
+    div.item.card p.view_more a {
+        font-size: 0.9em;
+        font-weight: 400;
+    }
+
+    p {
+        font-size: 1em;
+        line-height: 1.4em;
+    }
+
+    div.item p a:hover,
+    div.item a:hover {
+        text-decoration: none;
+    }
+
+    div.item span.vote_average,
+    div.image_content a div span.vote_average {
+        float: right;
+    }
+
+    div.item.card span.release_date {
+        font-size: 1.0em;
+        float: right;
+        padding-left: 6px;
+    }
+
+    .overview {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 4px 4px 0 4px;
+        height: 130px;
+    }
+
+    body,
+    ul {
+        margin: 0;
+        padding: 0;
+        color: #000;
+        font-family: 'Source Sans Pro', 'Arial', sans-serif;
+        font-size: 1em;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+</style>
+<script type="text/javascript">
+    var z = 0; //to defines unique ids of itemDiv
+    function cloner() {
+        var ele = document.getElementById('HiddenDiv');
+        var child = ele.childNodes;
+
+        ele.style.display = '';
+        var clone = ele.cloneNode(true);
+
+        clone.id = clone.id + z;
+        var resultDiv = document.getElementsByClassName('parent')[0].appendChild(clone);
+        ele.style.display = 'none';
+
+        z++;
+    }
+
+    function Get(yourUrl) {
+        var Httpreq = new XMLHttpRequest(); // a new request
+        Httpreq.open("get", yourUrl, false);
+        Httpreq.send(null);
+        return Httpreq.responseText;
+    }
+
+
+    var yourUrl = "http://api.themoviedb.org/3/movie/popular?api_key=5de339ee88941d862165471adf9d5473";
+    var json_obj = JSON.parse(Get(yourUrl));
+    var arrayOfObjects = json_obj.results;
+    for (var i = 0; i < arrayOfObjects.length; i++) {
+        var object = arrayOfObjects[i];
+        DivMaker(object);
+    }
+
+    function DivMaker(object) {
+        document.getElementsByClassName('aPoster')[0, 1].alt = object.title;
+        document.getElementsByClassName('aPoster')[0].href = "https://image.tmdb.org/t/p/w185_and_h278_bestv2" + object.poster_path;
+
+        document.getElementsByClassName('aPoster')[1].href = "https://www.themoviedb.org/movie/" + object.id + "?language=en";
+
+        // document.getElementsByClassName('poster1')[0].src = "Preloader_8.gif";
+        document.getElementsByClassName('poster1')[0].src = "https://image.tmdb.org/t/p/w185_and_h278_bestv2" + object.poster_path;
+        document.getElementsByClassName('poster1')[0].alt = object.title;
+
+        document.getElementsByClassName('title')[0].href = "https://www.themoviedb.org/movie/" + object.id + "?language=en";
+        document.getElementsByClassName('title')[0].title = object.title;
+        document.getElementsByClassName('title')[0].alt = object.title;
+        document.getElementsByClassName('title')[0].text = object.title;
+
+        document.getElementsByClassName('vote_average')[0].innerHTML = object.vote_average + ' \u272A';
+
+        var str = object.release_date;
+        var res = str.slice(0, 4);
+        document.getElementsByClassName('release_date')[0].innerHTML = res + ' \uD83D\uDCC5';
+
+        document.getElementsByClassName('overview')[0].innerHTML = object.overview;
+        cloner();
+
+    }
+</script>
+
+</html>
