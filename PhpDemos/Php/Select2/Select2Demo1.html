@@ -36,7 +36,7 @@
             });
             $('.select2Demo').on('change', function() {
                 var res = $('.select2Demo').val();
-                
+
                 $('.selectedItems').text(res);
 
                 extra_search = $('.selectedItems').text();
@@ -65,30 +65,30 @@
             // });
 
 
-            // $(".au").on("click", function() {
-            //     $example.val("au").trigger("change");
-            // });
-            //
-            // $(".open").on("click", function() {
-            //     $example.select2("open");
-            // });
-            // $(".cls").on("click", function() {
-            //     $example.select2("close");
-            // });
-            //
-            // $(".init").on("click", function() {
-            //     initAgain($('.select2Demo'));
-            // });
-            // $(".destroy").on("click", function() {
-            //     $example.select2("destroy");
-            // });
-            //
-            // $(".multi-set").on("click", function() {
-            //     $example.val(["cn", "us"]).trigger("change");
-            // });
-            // $(".multi-clear").on("click", function() {
-            //     $example.val(null).trigger("change");
-            // });
+            $(".au").on("click", function() {
+                $example.val("au").trigger("change");
+            });
+
+            $(".open").on("click", function() {
+                $example.select2("open");
+            });
+            $(".cls").on("click", function() {
+                $example.select2("close");
+            });
+
+            $(".init").on("click", function() {
+                initAgain($('.select2Demo'));
+            });
+            $(".destroy").on("click", function() {
+                $example.select2("destroy");
+            });
+
+            $(".multi-set").on("click", function() {
+                $example.val(["cn", "us"]).trigger("change");
+            });
+            $(".multi-clear").on("click", function() {
+                $example.val(null).trigger("change");
+            });
         });
         var ele;
 
