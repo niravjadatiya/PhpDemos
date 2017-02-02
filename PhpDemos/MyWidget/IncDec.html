@@ -3,98 +3,35 @@
 
 <head>
     <meta charset="utf-8">
+    <!-- <link href="IncDec.css"> -->
+    <link rel="stylesheet" href="IncDec.css" media="screen" title="no title">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="IncDec.js" charset="utf-8"></script>
     <title>Widget</title>
     <script>
-        $(function() {
-            $.widget("create.myTextBox", {
-                _create: function() {
-                    this._textbox = $(
-                        "<div class='container'><input type='button' name='btnMinus' id='btnMinus' value='-'><input type='text' name='txtArea' id='txtAnswer' class='txtAnswer' value='0'><input type='button' name='btnPlus' id='btnPlus' value='+'></div>"
-                    );
-                    this._textbox.width(this.options.width);
-                    this._textbox.css("position", "absolute");
-                    $(this.element).append(this._textbox);
-                },
-                _destroy: function() {
-                    this._textbox.remove();
-                }
+        $(document).ready(function() {
+            var x = $("#test").IncDecBox({
+              autoOpen:true
             });
-            // $("#button4").myTextBox("move", 300);
-            $('#textBox').on('click', function() {
-                $("#divAdd").myTextBox();
-                $(this).val(IncrementDecrement(this));
-            });
-            $(document).on('click', function() {
-                $('#textBox').val($('.txtAnswer').val());
-                if (!$(event.target).is('div .container input') && !$(event.target).is('#textBox') && !$(event.target).is('.container')) {
-                    $('#divAdd').myTextBox("destroy");
-                    // console.log("gone");
-                }
-            });
+             $("#tesssst55").IncDecBox();
+             $("#tesssst66").IncDecBox();
         });
-
-        function IncrementDecrement(ele) {
-            var result = $('.txtAnswer').val();
-            $('#btnPlus').on('click', function() {
-                parseFloat(result);
-                result++;
-                $('.txtAnswer').val(result);
-            });
-            $('#btnMinus').on('click', function() {
-                parseFloat(result);
-                result--;
-                $('.txtAnswer').val(result);
-            });
-            // return result;
-        }
     </script>
 </head>
 
 <body>
-    <div id="divAdd"></div>
-    <input type="text" name="name" value="" id="textBox">
+    <!-- <div id="divAdd"></div> -->
+    <input type="text" name="name" value="" id="test">
+    <input type="text" name="name" value="" id="tesssst55">
+    <input type="text" name="name" value="" id="tesssst66">
 </body>
 <style media="screen">
-    .container {
-        float: left;
-        width: 170px;
-        border: 5px solid black;
-        margin-top: 2%;
-        background-color: black;
-        box-shadow: 10px 10px 5px #888888;
-    }
-
-    /*button {
-        float: left;
-    }*/
-
-    #btnMinus,
-    #btnPlus {
-        float: left;
-        width: 19%;
-        font-weight: bold;
-        font-size: 30pt;
-        border: none;
-        outline: none;
-        background-color: yellow;
-    }
-
-    #btnMinus:hover,
-    #btnPlus:hover {
-        background-color: silver;
-        transition: all 0.3s ease-out;
-    }
-
-    .txtAnswer {
-        align-self: center;
-        width: 55%;
-        font-size: 20pt;
-        text-align: right;
-        background-color: silver;
-    }
+/*#test {
+  width: 90%;
+  height: 20px;
+}*/
 </style>
 
 </html>

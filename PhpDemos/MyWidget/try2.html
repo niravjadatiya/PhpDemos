@@ -8,59 +8,123 @@
     <title>try2</title>
 </head>
 <script>
-    $(document).ready(function() {
-        $.widget("custom.progressbar", {
+    (function($) {
+
+        $.widget("ui.mywidget", {
             options: {
-                value: 0
+                autoOpen: fal se
             },
+
             _create: function() {
-                this.options.value = this._constrain(this.options.value);
-                this.element.addClass("progressbar");
-                this.refresh();
+              this._IncDec = $(
+                  "<div class='IncDecDiv'><input type='button' name='btnMinus' id='btnMinus' value='-'><input type='text' name='txtArea' id='txtAnswer' class='txtAnswer' value='0'><input type='button' name='btnPlus' id='btnPlus' value='+'></div>"
+              );
+              this._IncDec.width(this.options.width);
+              this._IncDec.css("position", "absolute");
+              $(this.element).after(this._IncDec);
+                // by default, consider this thing closed.
+                this._isOpen = false;
+
+                // remember this instance
+                $.ui.mywidget.instances.push(this.element);
             },
+
+            _init: function() {
+
+                // call open if this instance should be open by default
+                if (this.options.autoOpen) {
+                    this.open();
+                }
+            },
+
+            open: function() {
+                this._isOpen = true;
+
+                // trigger beforeopen event.  if beforeopen returns false,
+                // prevent bail out of this method.
+                if (this._trigger("beforeopen") === false) {
+                    return;
+                }
+
+                // call methods on every other instance of this dialog
+                $.each(this._getOtherInstances(), function() {
+                    var $this = $(this);
+
+                    if ($this.mywidget("isOpen")) {
+                        $this.mywidget("close");
+                    }
+                });
+
+                // more open related code here
+
+                // trigger open event
+                this._trigger("open");
+
+                return this;
+            },
+
+            close: function() {
+                this._isOpen = false;
+
+                // trigger close event
+                this._trigger("close");
+
+                return this;
+            },
+
+            isOpen: function() {
+                return this._isOpen;
+            },
+
+            destroy: function() {
+                // remove this instance from $.ui.mywidget.instances
+                var element = this.element,
+                    position = $.inArray(element, $.ui.mywidget.instances);
+
+                // if this instance was found, splice it off
+                if (position > -1) {
+                    $.ui.mywidget.instances.splice(position, 1);
+                }
+
+                // call the original destroy method since we overwrote it
+                $.Widget.prototype.destroy.call(this);
+            },
+
+            _getOtherInstances: function() {
+                var element = this.element;
+
+                return $.grep($.ui.mywidget.instances, function(el) {
+                    return el !== element;
+                });
+            },
+
             _setOption: function(key, value) {
-                if (key === "value") {
-                    value = this._constrain(value);
+                this.options[key] = value;
+
+                switch (key) {
+                    case "something":
+                        // perform some additional logic if just setting the new
+                        // value in this.options is not enough.
+                        break;
                 }
-                this._super(key, value);
-            },
-            _setOptions: function(options) {
-                this._super(options);
-                this.refresh();
-            },
-            refresh: function() {
-                var progress = this.options.value + "%";
-                this.element.text(progress);
-                if (this.options.value == 100) {
-                    this._trigger("complete", null, {
-                        value: 100
-                    });
-                }
-            },
-            _constrain: function(value) {
-                if (value > 100) {
-                    value = 100;
-                }
-                if (value < 0) {
-                    value = 0;
-                }
-                return value;
-            },
-            _destroy: function() {
-                this.element
-                    .removeClass("progressbar")
-                    .text("");
             }
         });
-        $('.test').progressbar();
-        $('.test').progressbar("destroy");
+
+        $.extend($.ui.mywidget, {
+            instances: []
+        });
+
+    })(jQuery);
+    $(document).ready(function() {
+        $('.test').mywidget();
+        console.log("gone");
     });
 </script>
 
 <body>
-<div class="test">
+    <div class="test">
 
-</div>
+    </div>
 </body>
 
 </html>
