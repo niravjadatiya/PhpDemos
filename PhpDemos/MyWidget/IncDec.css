@@ -2,14 +2,16 @@
     /*float: left;*/
     margin-top: 1px;
     margin-bottom: 1px;
-    background-color: black;
+    background-color: lightgrey;
+    padding: 5px;
+    /*top: 207px; left: 391px; z-index: 1060; display: block;*/
 }
 
-#btnMinus {
+.btnMinus {
     /*margin-left: 2px;*/
     color: white;
     float: left;
-    width: 22.4%;
+    width: 37px;
     /*height: 44px;*/
     /*margin-top: 5px;*/
     font-weight: bold;
@@ -19,11 +21,11 @@
     background-color: rgb(62, 144, 62);
 }
 
-#btnPlus {
+.btnPlus {
     /*margin-left: 2px;*/
     color: white;
     float: right;
-    width: 22.4%;
+    width: 37px;
     /*height: 44px;*/
     /*margin-top: 5px;*/
     font-weight: bold;
@@ -33,7 +35,7 @@
     background-color: rgb(62, 144, 62);
 }
 
-#btnMinus:hover, #btnPlus:hover {
+.btnMinus:hover, .btnPlus:hover {
     background-color: silver;
     transition: all 0.3s ease-out;
 }
@@ -42,7 +44,7 @@
     color: rgb(62, 144, 62);
     float: left;
     align-self: center;
-    width: 55%;
+    width: 39px;
     /*height: 100%;*/
     font-size: 21pt;
     text-align: center;

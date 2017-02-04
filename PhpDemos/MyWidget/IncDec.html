@@ -3,35 +3,34 @@
 
 <head>
     <meta charset="utf-8">
-    <!-- <link href="IncDec.css"> -->
     <link rel="stylesheet" href="IncDec.css" media="screen" title="no title">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="/PhpDemos/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
+    <script src="/PhpDemos/jquery-ui.js"></script>
     <script src="IncDec.js" charset="utf-8"></script>
     <title>Widget</title>
     <script>
         $(document).ready(function() {
-            var x = $("#test").IncDecBox({
-              autoOpen:true
-            });
-             $("#tesssst55").IncDecBox();
-             $("#tesssst66").IncDecBox();
+            $(".test").IncDecBox();
+            $(".tesssst55").IncDecBox();
+            $(".tesssst66").IncDecBox();
         });
     </script>
 </head>
 
 <body>
-    <!-- <div id="divAdd"></div> -->
-    <input type="text" name="name" value="" id="test">
-    <input type="text" name="name" value="" id="tesssst55">
-    <input type="text" name="name" value="" id="tesssst66">
+    <input type="text" name="name" value="" class="test">
+    <!-- <br><br><br> -->
+    <input type="text" name="name" value="" class="tesssst55">
+    <!-- <br><br><br> -->
+    <input type="text" name="name" value="" class="tesssst66">
 </body>
 <style media="screen">
-/*#test {
-  width: 90%;
-  height: 20px;
-}*/
+    input {
+        float: left;
+        display: inline;
+        height: 30px;
+    }
 </style>
 
 </html>
