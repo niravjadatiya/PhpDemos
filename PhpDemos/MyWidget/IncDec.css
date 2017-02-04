@@ -1,19 +1,14 @@
 .IncDecDiv {
-    /*float: left;*/
     margin-top: 1px;
     margin-bottom: 1px;
     background-color: lightgrey;
     padding: 5px;
-    /*top: 207px; left: 391px; z-index: 1060; display: block;*/
 }
 
 .btnMinus {
-    /*margin-left: 2px;*/
     color: white;
     float: left;
     width: 37px;
-    /*height: 44px;*/
-    /*margin-top: 5px;*/
     font-weight: bold;
     font-size: 20pt;
     border: none;
@@ -22,12 +17,9 @@
 }
 
 .btnPlus {
-    /*margin-left: 2px;*/
     color: white;
     float: right;
     width: 37px;
-    /*height: 44px;*/
-    /*margin-top: 5px;*/
     font-weight: bold;
     font-size: 20pt;
     border: none;
@@ -45,7 +37,6 @@
     float: left;
     align-self: center;
     width: 39px;
-    /*height: 100%;*/
     font-size: 21pt;
     text-align: center;
     background-color: lightgrey;
