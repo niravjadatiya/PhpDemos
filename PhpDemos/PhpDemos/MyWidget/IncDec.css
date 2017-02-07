@@ -1,0 +1,45 @@
+.IncDecDiv {
+    margin-top: 1px;
+    margin-bottom: 1px;
+    background-color: lightgrey;
+    padding: 5px;
+}
+
+.btnMinus {
+    color: white;
+    float: left;
+    width: 37px;
+    font-weight: bold;
+    font-size: 20pt;
+    border: none;
+    outline: none;
+    background-color: rgb(62, 144, 62);
+}
+
+.btnPlus {
+    color: white;
+    float: right;
+    width: 37px;
+    font-weight: bold;
+    font-size: 20pt;
+    border: none;
+    outline: none;
+    background-color: rgb(62, 144, 62);
+}
+
+.btnMinus:hover, .btnPlus:hover {
+    background-color: silver;
+    transition: all 0.3s ease-out;
+}
+
+.txtAnswer {
+    color: rgb(62, 144, 62);
+    float: left;
+    align-self: center;
+    width: 39px;
+    font-size: 21pt;
+    text-align: center;
+    background-color: lightgrey;
+    border: none;
+    padding: none:
+}

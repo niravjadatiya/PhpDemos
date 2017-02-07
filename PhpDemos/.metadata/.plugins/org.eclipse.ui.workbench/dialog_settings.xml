@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="272" key="DIALOG_X_ORIGIN"/>
+		<item value="17" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.internal.QuickAccess">
+		<item value="226" key="dialogHeight"/>
+		<item value="326" key="dialogWidth"/>
+		<list key="textEntries">
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+		</list>
+		<list key="orderedElements">
+			<item value="org.eclipse.ui.window.preferences(preferencePageId=org.eclipse.ui.browser.preferencePage)"/>
+			<item value="org.eclipse.wst.jsdt.ui.preferences.CodeAssistPreferenceAdvanced"/>
+			<item value="org.eclipse.ui.window.preferences(preferencePageId=org.eclipse.ui.preferencePages.ColorsAndFonts)"/>
+		</list>
+		<list key="orderedProviders">
+			<item value="org.eclipse.ui.commands"/>
+			<item value="org.eclipse.ui.preferences"/>
+			<item value="org.eclipse.ui.commands"/>
+		</list>
+		<list key="textArray">
+			<item value="web bro"/>
+			<item value="edi"/>
+			<item value="color"/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+	</section>
+</section>
