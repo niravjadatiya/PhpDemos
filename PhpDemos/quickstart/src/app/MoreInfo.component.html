@@ -1,0 +1,40 @@
+<div class="col-sm-12 mainDiv" *ngFor="let info of moviesInfo">
+
+    <!--<div class="background" id="block" [ngStyle]="{'background-image': 'url(' + photo + ')'}"></div>-->
+    <div class="background" id="block" [ngStyle]="{'background-image': 'url(' + photo+info.images.backdrops[0].file_path + ')'}"></div>
+
+    <div class="col-sm-12">
+
+        <div class="col-sm-offset-1 col-sm-4 imageDiv"><br><br>
+            <img class="image" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{info.poster_path}}" title="{{info.title}}">
+        </div>
+
+        <div class="col-sm-7 itemsDiv">
+            <div class="col-sm-offset-2 col-sm-10 titleDiv">
+                <h1 class="title"><b>{{info.title}} </b><span> ({{ info.release_date | date:'yyyy'}})</span></h1>
+                <h4><b>{{info.tagline}}</b></h4>
+            </div>
+
+            <h3><b>Overview</b></h3>
+            <p>{{info.overview}}</p>
+            <h3><b>Featured Crew</b></h3>
+
+            <div class="col-sm-4 crewName " *ngFor="let crew of info.credits.crew | slice:0:6">
+                <h4> {{ crew.name }}</h4>
+                <p> {{ crew.job }} </p>
+            </div>
+
+        </div>
+
+        <div class="col-sm-offset-1 col-sm-11 topBilledCast">
+            <br>
+            <h3 class="col-sm-12">Top Billed Cast</h3>
+            <div class="col-sm-2 castDiv" *ngFor="let cast of info.credits.cast | slice:0:6">
+                <img src="http://image.tmdb.org/t/p/w132_and_h132_bestv2{{cast.profile_path}}" alt="">
+                <h5><b> {{ cast.name }}</b></h5>
+                <p> {{ cast.character }} </p>
+            </div>
+        </div>
+        <!--<h3>Budget : {{info.budget |currency:'USD':true:'1.2-2'}}</h3>-->
+    </div>
+</div>

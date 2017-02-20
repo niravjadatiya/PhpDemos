@@ -1,0 +1,53 @@
+.image {}
+
+.imageDiv {}
+
+.title {}
+
+#block {
+    background-size: cover;
+    opacity: 0.3;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.mainDiv {
+    padding: 0px;
+}
+
+.itemsDiv {
+    padding: 1px;
+}
+
+.titleDiv {
+    text-align: center;
+}
+
+.fLeft {
+    float: left;
+}
+
+.crewName h4 {
+    font-weight: bolder;
+}
+
+.crewName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.castDiv img {
+    width: 130px;
+    height: 130px;
+    border-radius: 80%;
+    border: 1px solid black;
+}
+
+.castDiv {
+    width: 145px;
+    /*margin-right: 10px;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}

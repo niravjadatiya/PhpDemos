@@ -1,0 +1,28 @@
+<h1>TheMovieDb</h1>
+<div class="media" *ngIf="movieArray">
+    <div class="results parent" *ngFor="let movies of movieArray">
+        <div class="item poster card" id="HiddenDiv">
+            <div class="image_content">
+                <a class="result aPoster" href="javascript:void(0)" (click)="detailedView(movies)">
+                    <img class="poster1" data-sizes="auto" src='{{imgLink}}{{movies.poster_path}}' title="About {{movies.title}}" alt='{{movies.title}}'>
+                </a>
+            </div>
+            <div class="info">
+                <p>
+                    <a class="title result" href="javascript:void(0)" (click)="detailedView(movies)" title="About {{movies.title}}" alt="" value="">
+                        <h4><b>{{movies.title}}</b></h4>
+                    </a>
+                    <span class="vote_average">{{movies.vote_average}}<span id="" class=""> ✪</span></span>
+                    <!--&#x2605;-->
+                </p>
+                <p class="meta">
+                    <span class="release_date">{{movies.release_date | date :'yyyy'}} 📅</span>
+                    <span class="genres">{{getGenreIds(movies.genre_ids)}}</span>
+                </p><br><br><br>
+                <p class="overview">{{movies.overview}}</p>
+                <p class="view_more"><a id="movie_346672" class="result aPoster" href="javascript:void(0)" (click)="detailedView(movies)" title="More Info {{movies.title}}" alt="">More Info</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<button type="button" (click)="loadMore()" class="btn btn-success btn-lg">Load More</button>
